@@ -1,0 +1,9 @@
+<div 
+data-th-if="${message}"
+data-th-fragment="messageBox"
+class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+    <span class="font-medium">Success alert!!!</span> 
+    <!-- <span data-th-text="${session.message}"></span> -->
+    <span data-th-text="${message}"></span>
+    <!-- <span th-text="${@sessionHelper.removeMessage()}"></span>  -->
+</div>

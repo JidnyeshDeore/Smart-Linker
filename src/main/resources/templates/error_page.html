@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  th:replace="~{base :: parent(~{::#content},~{::script})}"
+>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error page</title>
+  </head>
+  <body>
+    <div id="content" class="text-center mt-12 md:w-1/2 mx-auto">
+
+        <div><h1>Something went Wrong...</h1></div>
+
+        <div class="text-red-600 text-center my-5" th:if="${session.message}">
+            <p th:text="${session.message}"></p><!-- User is Disabled message..........-->
+          </div>
+      <button class="bg-gray-900 mt-5 text-white px-3 py-2 rounded">
+        Login
+      </button>
+    </div>
+    <script>
+      console.log("Home page");
+    </script>
+  </body>
+</html>
+

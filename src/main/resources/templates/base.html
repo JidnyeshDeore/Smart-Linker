@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en" class="light" 
+   th:fragment="parent(content,script)"
+   xmlns:th="http://www.thymeleaf.org"
+    >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCM</title>
+    <!-- <title data-th-insert="${title}">SCM</title> -->
+
+      <link rel="stylesheet" data-th-href="@{'/css/output.css'}" />
+ 
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
+      rel="stylesheet" 
+      />
+    <!--Font Awesome-->
+      <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      rel="stylesheet" 
+      />
+
+
+</head>
+
+<!-- class=" dark:bg-gray-900 dark:text-white" -->
+<body  class="dark:bg-gray-900 bg-gray-100 dark:text-white">
+    <!--Common Header-->
+
+      <div th:if="${loggedInUser}">
+        <div data-th-replace="~{user/user_navbar::user-navbar}"></div>
+      </div>
+
+      <!--User is Not Logged in-->
+      <div th:unless="${loggedInUser}">
+        <div data-th-replace="~{navbar :: navbar}" ></div>
+      </div>
+
+      <div class=" container">
+        <div class="p-4">
+          <section data-th-replace="${content}"></section>
+          <!-- <h1>Base Page from base.html</h1> -->
+        </div>
+      </div>
+
+    <!--End of Common Header-->
+ 
+
+    
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
+
+
+<script data-th-src="@{'/js/script.js'}"></script>
+
+<script data-th-src="@{'/js/admin.js'}"></script>
+
+<script data-th-src="@{'/js/contacts.js'}"></script>
+
+
+<script>
+    function exportData() {
+        TableToExcel.convert(document.getElementById("contact-table"), {
+          name: "contacts.xlsx",
+          sheet: {
+            name: "Sheet 1",
+          },
+        });
+      }
+</script>
+
+
+</body>
+</html>
+
+  
+
+
